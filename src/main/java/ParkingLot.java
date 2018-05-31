@@ -39,4 +39,8 @@ public class ParkingLot {
     private int getCarIndex(int carId) {
         return IntStream.range(0, cars.size()).filter(i -> cars.get(i).getId() == carId).findFirst().orElse(-1);
     }
+
+    public double getRemainRate() {
+        return getRemainVolume() / volume;
+    }
 }
