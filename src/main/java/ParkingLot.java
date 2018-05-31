@@ -23,8 +23,8 @@ public class ParkingLot {
     public boolean hasCar(int carId) {
         return getCarIndex(carId) >= 0;
     }
-
     public int park(Car car) {
+
         cars.add(car);
         return car.getId();
     }
@@ -35,7 +35,13 @@ public class ParkingLot {
 
     public Car getCar(int token) {
         int index = getCarIndex(token);
-        return index >= 0 ? cars.get(index) : null;
+        if(index >= 0) {
+            Car result = cars.get(index);
+            cars.remove(result);
+            return result;
+        } else {
+            return null;
+        }
     }
 
     private int getCarIndex(int carId) {
