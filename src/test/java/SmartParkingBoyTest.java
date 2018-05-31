@@ -19,7 +19,7 @@ public class SmartParkingBoyTest {
         int token = smartParkingBoy.park(car);
         assertThat(token).isEqualTo(1);
         assertThat(firstParkinLot.hasCar(1)).isTrue();
-        assertThat(firstParkinLot.hasCar(2)).isFalse();
+        assertThat(secondParkinLot.hasCar(1)).isFalse();
     }
 
     @Test
@@ -34,7 +34,22 @@ public class SmartParkingBoyTest {
         int token = smartParkingBoy.park(car);
         assertThat(token).isEqualTo(1);
         assertThat(firstParkinLot.hasCar(1)).isTrue();
-        assertThat(firstParkinLot.hasCar(2)).isFalse();
+        assertThat(secondParkinLot.hasCar(1)).isFalse();
+    }
+
+    @Test
+    public void should_parkingIntoSecondParkingLotWhenSecondParkingLotHaveEqualSpace() {
+        List<ParkingLot> parkinglots = new ArrayList<>();
+        ParkingLot firstParkinLot = new ParkingLot(1, 5);
+        parkinglots.add(firstParkinLot);
+        ParkingLot secondParkinLot = new ParkingLot(2, 10);
+        parkinglots.add(secondParkinLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(1, parkinglots);
+        Car car = new Car(1);
+        int token = smartParkingBoy.park(car);
+        assertThat(token).isEqualTo(1);
+        assertThat(firstParkinLot.hasCar(1)).isFalse();
+        assertThat(secondParkinLot.hasCar(1)).isTrue();
     }
 
     @Test

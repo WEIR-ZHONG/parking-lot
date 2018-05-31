@@ -12,14 +12,6 @@ public class ParkingLot {
         this.volume = volume;
     }
 
-    public int getVolume() {
-        return volume;
-    }
-
-    public int getId() {
-        return id;
-    }
-
     public boolean hasCar(int carId) {
         return getCarIndex(carId) >= 0;
     }
