@@ -21,7 +21,7 @@ public class ParkingLot {
         return car.getId();
     }
 
-    public int getRemainVolume() {
+    public double getRemainVolume() {
         return volume - cars.size();
     }
 
